@@ -19,7 +19,7 @@ todos.push('new item');
 todos[index] = 'new item';
 
 // It should have a way to delete todo
-todos.splice(index, Num);
+todos.splice(index, 1);
 
 
 // Version-2 Functions
