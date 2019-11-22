@@ -54,13 +54,7 @@ function deleteTodo(index){
 
 // deleteTodo(3); expected --> My todos: ['item1', 'todo', 'item3']
 
-// Version-3 Objects
-// Requirements
-// It should store the todos array on an object
-// It should have a displayTodos method
-// It should have an addTodo method
-// It should have a changeTodo method
-// It should have a deleteTodo method
+
 
 // It should store the todos array on an object
 var todoList = {
@@ -85,7 +79,7 @@ var todoList = {
     addTodo: function(param){
         this.todos.push(param);
         this.displayTodos();
-        }
+    }
 };
 // todoList.addTodo('new item'); expected --> My todos: ['item1', 'item2', 'item3','new item']
 
@@ -98,11 +92,11 @@ var todoList = {
     addTodo: function(param){
         this.todos.push(param);
         this.displayTodos();
-        },
+    },
     changeTodo: function(index,param){
         this.todos[index] = param;
         this.displayTodos();
-        },  
+    },  
 };
 // todoList.changeTodo(1,'new item'); expected --> My todos: ['item1', 'new item', 'item3']
 
@@ -115,14 +109,86 @@ var todoList = {
     addTodo: function(param){
         this.todos.push(param);
         this.displayTodos();
-        },
+    },
     changeTodo: function(index,param){
         this.todos[index] = param;
         this.displayTodos();
-        },
+    },
     deleteTodo: function(index){
         this.todos.splice(index, 1);
         this.displayTodos();
-        }      
+    }      
 };
 // todoList.deleteTodo(1); expected --> My todos: ['item1','item3']
+
+// Version-4 Booleans
+// Requirements
+// todoList.addTodo should add Objects
+// todoList.changeTodo should change the todoText property
+// todoList.toggleCompleted should change the completed property
+
+// todoList.addTodo should add Objects
+var todoList = {
+    todos: [],
+    displayTodos: function(){
+        console.log("My todos:", this.todos);
+    },
+    addTodo: function(param){
+        this.todos.push({
+            todoText: param,
+            completed: false
+        });
+        this.displayTodos();
+    },
+}
+// todoList.addTodo('this is an object'); expected --> My todos: [{todoText: 'this is an object', completed: false }]
+
+
+// todoList.changeTodo should change the todoText property
+var todoList = {
+    todos: [],
+    displayTodos: function(){
+        console.log("My todos:", this.todos);
+    },
+    addTodo: function(todoText){
+        this.todos.push({
+            todoText: todoText,
+            completed: false
+        });
+        this.displayTodos();
+    },
+    changeTodo: function(index,param){
+        this.todos[index].todoText = param;
+        this.displayTodos();
+    },
+}
+// todoList.changeTodo(0, 'chanced');; expected --> My todos: [{todoText: 'chanced', completed: false }]
+
+
+// todoList.toggleCompleted should change the completed property
+var todoList = {
+    todos: [],
+    displayTodos: function(){
+        console.log("My todos:", this.todos);
+    },
+    addTodo: function(todoText){
+        this.todos.push({
+            todoText: todoText,
+            completed: false
+        });
+        this.displayTodos();
+    },
+    changeTodo: function(index,param){
+        this.todos[index].todoText = param;
+        this.displayTodos();
+    },
+    deleteTodo: function(index){
+        this.todos.splice(index, 1);
+        this.displayTodos();
+    },
+    toggleCompleted: function(index){
+        var todo = this.todos[index];
+        todo.completed = !todo.completed;
+        this.displayTodos();
+    }
+};
