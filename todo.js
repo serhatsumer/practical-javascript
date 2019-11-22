@@ -54,7 +54,13 @@ function deleteTodo(index){
 
 // deleteTodo(3); expected --> My todos: ['item1', 'todo', 'item3']
 
-
+// Version-3 Objects
+// Requirements
+// It should store the todos array on an object
+// It should have a displayTodos method
+// It should have an addTodo method
+// It should have a changeTodo method
+// It should have a deleteTodo method
 
 // It should store the todos array on an object
 var todoList = {
@@ -162,7 +168,7 @@ var todoList = {
         this.displayTodos();
     },
 }
-// todoList.changeTodo(0, 'chanced');; expected --> My todos: [{todoText: 'chanced', completed: false }]
+// todoList.changeTodo(0, 'chanced'); expected --> My todos: [{todoText: 'chanced', completed: false }]
 
 
 // todoList.toggleCompleted should change the completed property
@@ -192,3 +198,81 @@ var todoList = {
         this.displayTodos();
     }
 };
+
+// Version-5 Loops of Logic
+// Requirements
+// displayTodos should show .todoText
+// displayTodos should tell you if .todos is empty
+// displayTodos should show .completed
+
+// displayTodos should show .todoText
+var todoList = {
+    todos: [],
+    displayTodos: function(){
+        console.log("My todos:");
+        for (var i=0; i<this.todos.legth; i++){
+        console.log(this.todos[i].todoText);
+        }
+    },
+}
+// displayTodos should tell you if .todos is empty
+var todoList = {
+    todos: [],
+    displayTodos: function(){
+        if(this.todos.length === 0){
+        console.log('your todo list is empty');
+        } else {
+        console.log('My todos:');
+            for (var i=0; i<this.todos.legth; i++){
+            console.log(this.todos[i].todoText);
+            }
+         }
+    },
+}
+// displayTodos should show .completed
+var todoList = {
+    todos: [],
+    displayTodos: function(){
+        if(this.todos.length === 0){
+        console.log('your todo list is empty');
+        } else {
+        console.log('My todos:');
+            for (var i=0; i<this.todos.legth; i++){
+                if (this.todos[i].completed === true){
+                    console.log('(x)', this.todos[i].todoText);
+                } else {
+                    console.log('( )', this.todos[i].todoText);
+                  }
+            }
+         }
+    },
+    addTodo: function(todoText){
+        this.todos.push({
+            todoText: todoText,
+            completed: false
+        });
+        this.displayTodos();
+    },
+    changeTodo: function(index,param){
+        this.todos[index].todoText = param;
+        this.displayTodos();
+    },
+    deleteTodo: function(index){
+        this.todos.splice(index, 1);
+        this.displayTodos();
+    },
+    toggleCompleted: function(index){
+        var todo = this.todos[index];
+        todo.completed = !todo.completed;
+        this.displayTodos();
+    }   
+};
+// todoList.displayTodos(); expected --> your todo list is empty
+// todoList.addTodo('an item'); expected --> My todos: an item
+// todoList.deleteTodo(0); expected --> undefined
+
+// todoList.addTodo('first'); expected --> My todos: () first
+// todoList.addTodo('second'); expected --> My todos: () first () second
+// todoList.toggleCompleted(1); expected --> My todos: ()first (x)second
+// todoList.toggleCompleted(0); expected --> My todos: (x)first ()second
+    
