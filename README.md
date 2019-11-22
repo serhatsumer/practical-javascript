@@ -7,3 +7,4 @@ This repository includes step by step **todo list** javascript codes.
 3. Version-3 Objects
 4. Version-4 Booleans
 5. Version-5 Loops of Logic
+6. Version-6 Thinking in Code
