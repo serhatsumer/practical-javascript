@@ -1,7 +1,8 @@
-// Version-6 Thinking in Code
+// Version-7  HTML and the DOM
 // Requirements
-// toggleAll: If everything is true, make everything false
-// toggleAll: Otherwise, make everything true
+// There should be a 'Display todos'button and a 'Toggle all' button in the app.
+// Clicking 'Display todos' should run todoList.displayTodos
+// Clicking 'Toggle all' should run todoList.toggleAll
 
 var todoList = {
     todos: [],
@@ -60,3 +61,16 @@ var todoList = {
             this.displayTodos();
         }     
 };
+
+let displayTodosButton = document.getElementById('displayTodosButton');
+let toggleAllButton = document.getElementById('toggleAllButton');
+
+displayTodosButton.addEventListener('click', function(){
+    todoList.displayTodos();
+});
+
+toggleAllButton.addEventListener('click', function(){
+    todoList.toggleAll();
+});
+
+
