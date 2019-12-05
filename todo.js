@@ -57,8 +57,8 @@ var handlers = {
         changeTodoTextInput.value = "";
         view.displayTodos();
     },
-    deleteTodos: function(position){
-        todoList.deleteTodos(position);
+    deleteTodo: function(position){
+        todoList.deleteTodo(position);
         view.displayTodos();
     },
     toggleCompleted: function() {
@@ -104,7 +104,7 @@ var view = {
             var elementClicked = event.target;
             // check if the element is a click button
                 if (elementClicked.className === 'deleteButton'){
-                    handler.deleteTodos(parseInt(elementClicked.parentNode.id));
+                    handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
                 }
         });
     }
